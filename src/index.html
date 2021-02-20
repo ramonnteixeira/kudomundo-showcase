@@ -7,15 +7,19 @@
 
     <script type="module" src="/build/kudomundo-webcomponents.esm.js"></script>
     <script nomodule src="/build/kudomundo-webcomponents.js"></script>
+
+    <script>
+      function execute() {
+        return new Promise(resolve => {
+          setTimeout(()=> {
+            resolve(1);
+            console.log('foi');
+          }, 3000)
+        });
+      }
+    </script>
   </head>
   <body>
-    <animated-button id="button" text="Enviar" success="Sucesso!"></animated-button>
-    <script>
-      const action = () => new Promise(resolve => {
-        setTimeout(()=> resolve(1), 3000)
-      });
-
-      document.getElementById('button').action = action;
-    </script>
+    <animated-button style="margin-top: 300px" id="button" text="Enviar" success="Sucesso!" action="() => execute()"></animated-button>
   </body>
 </html>

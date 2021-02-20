@@ -57,8 +57,8 @@ export class Confetto {
       y: randomRange(8, 15),
     }
     this.position = {
-      x: randomRange(canvas.width/2 - button.offsetWidth/4, canvas.width/2 + button.offsetWidth/4),
-      y: randomRange(canvas.height/2 + button.offsetHeight/2 + 8, canvas.height/2 + (1.5 * button.offsetHeight) - 8),
+      x: randomRange(canvas.width*1.6 - button.offsetWidth/4, canvas.width*1.6 + button.offsetWidth/4),
+      y: randomRange(canvas.height*1.6 + button.offsetHeight/2 + 8, canvas.height*1.6 + (1.5 * button.offsetHeight) - 8),
     }
     this.rotation = randomRange(0, 2 * Math.PI)
     this.scale = {

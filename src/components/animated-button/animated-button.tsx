@@ -17,12 +17,22 @@ export class AnimatedButton {
    */
   @Prop() success: string;
 
-  @Prop() action: () => Promise<any>;
+  @Prop() action: string;
 
-
+  private onClick: () => Promise<any>;
   private button?: HTMLButtonElement;
   private canvas?: HTMLCanvasElement;
   private disabled = false;
+
+  constructor() {
+    if (this.action) {
+      this.onClick = eval(this.action) as () => Promise<any>;
+    }
+
+    if (!this.onClick) {
+      throw Error('Evento action não definido');
+    }
+  }
 
   private clickButton() {
     if (!this.disabled) {
@@ -32,7 +42,7 @@ export class AnimatedButton {
       this.button.classList.remove('ready')
       setTimeout(async() => {
         // Completed stage
-        await this.action()
+        await this.onClick()
         this.button.classList.add('complete')
         this.button.classList.remove('loading')
         setTimeout(() => {
