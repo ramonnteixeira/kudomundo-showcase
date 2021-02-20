@@ -5,12 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
     <title>Stencil Component Starter</title>
 
+    <style>
+      *::part(whitelabel) {
+        --color-2: blue;
+      }
+    </style>
+
     <script type="module" src="/build/kudomundo-webcomponents.esm.js"></script>
     <script nomodule src="/build/kudomundo-webcomponents.js"></script>
 
   </head>
   <body>
     <animated-button style="margin-top: 300px" id="button" text="Enviar" success="Sucesso!"></animated-button>
+    <animated-button style="margin-left: 500px;" id="button2" text="Enviar sem confete" success="Sucesso!" disable-burst="true"></animated-button>
+    <animated-button style="margin-top: 60px; margin-left: 200px;" id="button3" text="Enviar de outro lugar" success="Pega essa"></animated-button>
     <script>
       function execute() {
         return new Promise(resolve => {
@@ -22,6 +30,8 @@
       }
 
       document.getElementById('button').action = execute;
+      document.getElementById('button2').action = execute;
+      document.getElementById('button3').action = execute;
     </script>
   </body>
 </html>

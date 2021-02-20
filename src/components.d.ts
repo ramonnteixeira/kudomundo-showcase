@@ -7,13 +7,28 @@
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
     interface AnimatedButton {
+        /**
+          * Action executed during the animation Use a async function or return a promise
+          * @type {Function}
+          * @memberof AnimatedButton
+         */
         "action": Function;
         /**
+          * Disable burst effect
+          * @type {boolean}
+          * @memberof AnimatedButton
+         */
+        "disableBurst": boolean;
+        /**
           * The success text
+          * @type {string}
+          * @memberof AnimatedButton
          */
         "success": string;
         /**
           * The button text
+          * @type {string}
+          * @memberof AnimatedButton
          */
         "text": string;
     }
@@ -31,13 +46,28 @@ declare global {
 }
 declare namespace LocalJSX {
     interface AnimatedButton {
+        /**
+          * Action executed during the animation Use a async function or return a promise
+          * @type {Function}
+          * @memberof AnimatedButton
+         */
         "action"?: Function;
         /**
+          * Disable burst effect
+          * @type {boolean}
+          * @memberof AnimatedButton
+         */
+        "disableBurst"?: boolean;
+        /**
           * The success text
+          * @type {string}
+          * @memberof AnimatedButton
          */
         "success"?: string;
         /**
           * The button text
+          * @type {string}
+          * @memberof AnimatedButton
          */
         "text"?: string;
     }

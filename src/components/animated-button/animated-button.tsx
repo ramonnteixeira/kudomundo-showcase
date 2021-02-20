@@ -1,6 +1,12 @@
 import { Component, Prop, h } from '@stencil/core';
 import { initBurst } from './burst-effect/confetto';
 
+/**
+ * Component based on (https://codepen.io/coopergoeke/details/wvaYMbJ)[coopergoeke]
+ *
+ * @export
+ * @class AnimatedButton
+ */
 @Component({
   tag: 'animated-button',
   styleUrl: 'animated-button.scss',
@@ -9,15 +15,36 @@ import { initBurst } from './burst-effect/confetto';
 export class AnimatedButton {
   /**
    * The button text
+   *
+   * @type {string}
+   * @memberof AnimatedButton
    */
   @Prop() text: string;
 
   /**
    * The success text
+   *
+   * @type {string}
+   * @memberof AnimatedButton
    */
   @Prop() success: string;
 
+  /**
+   * Action executed during the animation
+   * Use a async function or return a promise
+   *
+   * @type {Function}
+   * @memberof AnimatedButton
+   */
   @Prop() action: Function;
+
+  /**
+   * Disable burst effect
+   *
+   * @type {boolean}
+   * @memberof AnimatedButton
+   */
+  @Prop() disableBurst: boolean;
 
   private button?: HTMLButtonElement;
   private canvas?: HTMLCanvasElement;
@@ -40,7 +67,7 @@ export class AnimatedButton {
         this.button.classList.add('complete')
         this.button.classList.remove('loading')
         setTimeout(() => {
-          this.burst()
+          this.burst();
           setTimeout(() => {
             // Reset button so user can select it again
             this.disabled = false
@@ -53,7 +80,9 @@ export class AnimatedButton {
   }
 
   private burst() {
-    initBurst(this.canvas, this.button);
+    if (!this.disableBurst) {
+      initBurst(this.canvas, this.button);
+    }
   }
 
   private animatedLetters(text: string) {
@@ -80,7 +109,8 @@ export class AnimatedButton {
   render() {
     return <span>
       <button ref={el => this.button = el as HTMLButtonElement}
-       class="ready" onClick={() => this.clickButton()}>
+       class="ready" onClick={() => this.clickButton()}
+       part="whitelabel">
         <div class="message submitMessage">
           <span class="button-text" innerHTML={this.animatedLetters(this.text)}></span>
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 13 12.2">
