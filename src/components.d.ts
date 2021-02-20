@@ -7,7 +7,7 @@
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
     interface AnimatedButton {
-        "action": () => Promise<any>;
+        "action": Function;
         /**
           * The success text
          */
@@ -31,7 +31,7 @@ declare global {
 }
 declare namespace LocalJSX {
     interface AnimatedButton {
-        "action"?: () => Promise<any>;
+        "action"?: Function;
         /**
           * The success text
          */
