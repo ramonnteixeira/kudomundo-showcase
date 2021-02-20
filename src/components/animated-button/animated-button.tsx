@@ -82,11 +82,11 @@ export class AnimatedButton {
       <button ref={el => this.button = el as HTMLButtonElement}
        class="ready" onClick={() => this.clickButton()}>
         <div class="message submitMessage">
+          <span class="button-text" innerHTML={this.animatedLetters(this.text)}></span>
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 13 12.2">
             <polyline stroke="currentColor" points="2,7.1 6.5,11.1 11,7.1 " />
             <line stroke="currentColor" x1="6.5" y1="1.2" x2="6.5" y2="10.3" />
           </svg>
-          <span class="button-text" innerHTML={this.animatedLetters(this.text)}></span>
         </div>
 
         <div class="message loadingMessage">
@@ -98,10 +98,10 @@ export class AnimatedButton {
         </div>
 
         <div class="message successMessage">
+          <span class="button-text" innerHTML={this.animatedLetters(this.success)}></span>
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 13 11">
             <polyline stroke="currentColor" points="1.4,5.8 5.1,9.5 11.6,2.1 " />
           </svg>
-          <span class="button-text" innerHTML={this.animatedLetters(this.success)}></span>
         </div>
 
       </button>
