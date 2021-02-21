@@ -50,6 +50,12 @@ export class AnimatedButton {
   private canvas?: HTMLCanvasElement;
   private disabled = false;
 
+  private reset() {
+    this.disabled = false
+    this.button.classList.add('ready')
+    this.button.classList.remove('complete')
+  }
+
   private clickButton() {
     if (!this.action) {
       console.warn('Action is not definied!')
@@ -62,19 +68,21 @@ export class AnimatedButton {
       this.button.classList.add('loading')
       this.button.classList.remove('ready')
       setTimeout(async() => {
-        // Completed stage
-        await this.action()
-        this.button.classList.add('complete')
-        this.button.classList.remove('loading')
-        setTimeout(() => {
-          this.burst();
+        try {
+          await this.action()
+          this.button.classList.add('complete')
+          this.button.classList.remove('loading')
           setTimeout(() => {
-            // Reset button so user can select it again
-            this.disabled = false
-            this.button.classList.add('ready')
-            this.button.classList.remove('complete')
-          }, 4000)
-        }, 320)
+            this.burst()
+            setTimeout(() => {
+              this.reset()
+            }, 4000)
+          }, 320)
+        } catch (error) {
+          console.error(error)
+          this.button.classList.remove('loading')
+          this.reset()
+        }
       }, 200)
     }
   }
