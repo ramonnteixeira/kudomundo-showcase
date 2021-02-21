@@ -20,7 +20,6 @@
   button {
     display: flex;
     opacity: 1;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, .4) inset;
     transition: width .2s cubic-bezier(.39,1.86,.64,1) .3s;
     border: 3px transparent solid;
     background-color: var(--color-2, #1f2335);
