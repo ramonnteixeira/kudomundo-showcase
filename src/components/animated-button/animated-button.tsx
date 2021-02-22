@@ -121,10 +121,10 @@ export class AnimatedButton {
        part="whitelabel">
         <div class="message submitMessage">
           <span class="button-text" innerHTML={this.animatedLetters(this.text)}></span>
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 13 12.2">
+          {/* <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 13 12.2">
             <polyline stroke="currentColor" points="2,7.1 6.5,11.1 11,7.1 " />
             <line stroke="currentColor" x1="6.5" y1="1.2" x2="6.5" y2="10.3" />
-          </svg>
+          </svg> */}
         </div>
 
         <div class="message loadingMessage">
